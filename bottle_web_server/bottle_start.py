@@ -16,14 +16,8 @@ def do_login():
     body = ''
     for h in request.headers:
         headers += h + ":" + request.headers.get(h) + "\n"
-    for b in request.body:
-        body += b
-
-    # headers = request.headers
-    # body = request.body.readlines()
-
-    return headers + body
+    return headers + ''.join(request.body.readlines())
 
 
-run(host='localhost', port=8088)
+run(host='localhost', port=9191)
 
