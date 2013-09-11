@@ -19,5 +19,5 @@ def do_login():
     return headers + ''.join(request.body.readlines())
 
 
-run(host='localhost', port=9191)
+run(host='localhost', port=9191, reloader=True)
 
