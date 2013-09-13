@@ -22,5 +22,5 @@ def do_response():
     headers = ''
     body = ''
     for h in request.headers:
-        headers += h + ":" + request.headers.get(h) + "\n"
+        headers += h + ": " + request.headers.get(h) + "\n"
     return headers + ''.join(request.body.readlines())
