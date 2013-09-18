@@ -6,7 +6,7 @@ import sys
 import shutil
 
 if sys.argv.__len__() == 1:
-    print " WAR location does not defined"
+    print " WAR location is not defined"
     exit(0)
 
 WEBAPPS_DIR = "C:/dev/apache-tomcat/webapps/"
