@@ -1,7 +1,6 @@
 __author__ = 'shleger'
 
 from bottle import route, run, template, request, post, get, static_file, response, HTTPResponse
-import time
 
 
 PORT = 9191
@@ -32,10 +31,10 @@ def doCreateSigned():
     #response.set_header('Server', 'nginx')
     response.set_header('X-AspNet-Version', '4.0.30319')
     response.set_header('X-Powered-By', 'ASP.NET')
-    response.set_header('Location', '/fns36-reg/A7585B5F28625D47A71535C6EA59E2F1')
+    response.set_header('Location', '/fns36-reg/FINISHED')
     response.set_header('Cache-Control', 'private')
     response.set_header('Connection', 'keep-alive')
-    response.set_header('Link', '<http://localhost/fns36-reg/A7585B5F28625D47A71535C6EA59E2F1/regcard>;rel=fns36-reg-regcard, <http://localhost/fns36-reg/A7585B5F28625D47A71535C6EA59E2F1/status>;rel=fns36-reg-status')
+    response.set_header('Link', '<http://localhost/fns36-reg/FINISHED/regcard>;rel=fns36-reg-regcard, <http://localhost/fns36-reg/FINISHED/status>;rel=fns36-reg-status')
     response.set_header('Content-Length', '0')
 
     #	hdr = {'Location': 'http://localhost/fns36-reg/A7585B5F28625D47A71535C6EA59E2F1'}
@@ -43,7 +42,22 @@ def doCreateSigned():
 
     return response
 
-# return response
+
+#mulyimathods? @see http://www.artima.com/weblogs/viewpost.jsp?thread=101605
+
+@get("/fns36-reg/FINISHED/status")
+def doResponseStatus():
+    return '<?xml version="1.0" encoding="utf-8" ?><status><progress>FINISHED</progress></status>'
+
+@get("/fns36-reg/ERROR/status")
+def doResponseStatus():
+    return '<?xml version="1.0" encoding="utf-8" ?><status><progress>ERROR</progress></status>'
+
+@get("/fns36-reg/PENDING/status")
+def doResponseStatus():
+    return '<?xml version="1.0" encoding="utf-8" ?><status><progress>PENDING</progress></status>'
+
+
 
 @route('/fns36-reg/inspection-certs')
 def downloadCerts():
